@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Scheduler</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                  <h1 class="display-4 text-center">Anytime is Train Time</h1>
+                  <p class="lead text-center">Choo Choo. Chee Chee.</p>
+                </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <div class="card border-primary mb-3">
+                    <div class="card-header primary">
+                        Train Schedule
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeeTable">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        <div class="row">
+            <div class="col">
+                <div class="card border-primary">
+                    <div class="card-header">
+                        Add Train
+                    </div>
+                    <div class="card-body">
+                        <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Train Name</label>
+                            <input type="name" class="form-control" id="name" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Destination</label>
+                            <input type="role" class="form-control" id="destination" placeholder="Chicago, IL">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">First Train Time (HH:mm - military time)</label>
+                            <input class="form-control" id="time" placeholder="19:15">
+                        </div>
+                        <div class="form-group">
+                            <label for="rate">Frequency (mins)</label>
+                            <input class="form-control" id="frequency" placeholder="12">
+                        </div>
+                        <button id="add-train" type="submit" class="btn btn-primary float-left">Add train</button>
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap javascript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Jquery Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+    <!-- Moment.JS -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- Our javascript -->
+    <script src="assets/javascript/script.js"></script
+</body>
+</html>
