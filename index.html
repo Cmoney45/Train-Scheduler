@@ -21,6 +21,7 @@
                 <div class="card border-primary mb-3">
                     <div class="card-header primary">
                         Train Schedule
+                        <span class="text-align-right" id=currentTime>Current Time: </span>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped">
@@ -48,20 +49,20 @@
                     <div class="card-body">
                         <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Train Name</label>
-                            <input type="name" class="form-control" id="name" aria-describedby="emailHelp">
+                            <label for="trainName">Train Name</label>
+                            <input type="name" class="form-control" id="name" aria-describedby="emailHelp" required>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Destination</label>
-                            <input type="role" class="form-control" id="destination" placeholder="Chicago, IL">
+                            <label for="trainDestination">Destination</label>
+                            <input type="role" class="form-control" id="destination" placeholder="Chicago, IL" required>
                         </div>
                         <div class="form-group">
-                            <label for="date">First Train Time (HH:mm - military time)</label>
-                            <input class="form-control" id="time" placeholder="19:15">
+                            <label for="trainStartTime">First Train Time (HH:mm - military time)</label>
+                            <input type="time" class="form-control" id="time" placeholder="19:15" required>
                         </div>
                         <div class="form-group">
-                            <label for="rate">Frequency (mins)</label>
-                            <input class="form-control" id="frequency" placeholder="12">
+                            <label for="trainFrequency">Frequency (mins)</label>
+                            <input type="number" min="1" class="form-control" id="frequency" placeholder="12" required>
                         </div>
                         <button id="add-train" type="submit" class="btn btn-primary float-left">Add train</button>
                         </form>
@@ -81,6 +82,6 @@
     <!-- Moment.JS -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- Our javascript -->
-    <script src="assets/javascript/script.js"></script
+    <script src="assets/javascript/script.js"></script>
 </body>
 </html>

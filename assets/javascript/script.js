@@ -24,36 +24,72 @@ let frequency = 0;
 
 // Create on click event
   $(`#add-train`).on('click', function(event){
-      event.preventDefault();
+    event.preventDefault();
+    $(`#error-message`).remove()
+    const errorAlert = $(`<div>`);
+    errorAlert.addClass(`alert alert-danger`)
+    errorAlert.attr(`id`,`error-message`)
+    name = $(`#name`).val().trim();
+        if (name === ""){
+            errorAlert.html(`Please add a name for the train`)
+            $("#name").after(errorAlert);
+            return;
+        } 
+    destination = $(`#destination`).val().trim();
+        if (destination === ""){
+            errorAlert.html(`Please add a destination for the train`)
+            $("#destination").after(errorAlert);
+            return;
+        } 
+    startTime = $(`#time`).val().trim();
+    if (startTime === ""){
+        errorAlert.html(`Please add a time for the train`)
+        $("#time").after(errorAlert);
+        return;
+    } 
+    startTime = moment(startTime, "HH:mm").format("X");
+    moment(startTime, "x").subtract(1,"years");
+    frequency = $(`#frequency`).val().trim();
+        if (frequency === ""){
+            errorAlert.html(`Please add a frequency for the train`)
+            $("#frequency").after(errorAlert);
+            return;
+        } 
 
-      name = $(`#name`).val().trim();
-      destination = $(`#destination`).val().trim();
-      startTime = $(`#time`).val().trim();
-      startTime = moment(startTime, "HH:mm").format("x");
-      moment(startTime, "x").subtract(1,"years");
-      frequency = $(`#frequency`).val().trim();
-
-      database.ref(`/trains`).push({
-          name: name,
-          destination: destination,
-          startTime: startTime,
-          frequency: frequency,
-          dateAdded: firebase.database.ServerValue.TIMESTAMP
-      })
-  })
+    database.ref(`/trains`).push({
+        name: name,
+        destination: destination,
+        startTime: startTime,
+        frequency: frequency,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+    })
+})
 
   database.ref(`/trains`).on("child_added", function(childSnapshot) {
-    const frequency = childSnapshot.val().frequency
-    const minutesUntilArrival = Math.floor(frequency - (moment().format("mm")%frequency))
+    const currentTime = moment()
+    let trainStarted = childSnapshot.val().startTime
+    const frequency = parseInt(childSnapshot.val().frequency)
+
+    while (trainStarted <= currentTime){
+        trainStarted = moment(trainStarted, "X").add(frequency,"m");
+    }
+    const minutesAway = Math.ceil(parseInt(moment(trainStarted,"X").format("X")-moment(currentTime,"X").format("X"))/60)
 
     // full list of items to the well
     const tableRow = $(`<tr>`);
     tableRow.append(`<td>${childSnapshot.val().name}`)
     tableRow.append(`<td>${childSnapshot.val().destination}`)
+    if (frequency === 1){
+        tableRow.append(`<td>${frequency.toLocaleString()} min`)
+    } else {
     tableRow.append(`<td>${frequency.toLocaleString()} mins`)
-    tableRow.append(`<td>${moment(moment().add(minutesUntilArrival, `minutes`)).format("hh:mm a")}`)
-    tableRow.append(`<td>${minutesUntilArrival.toLocaleString()} mins`)
-
+    }
+    tableRow.append(`<td>${trainStarted.format("hh:mm a")}`)
+    if (minutesAway === 1) {
+        tableRow.append(`<td class="alert-danger">${minutesAway.toLocaleString()} min`)
+    } else {
+    tableRow.append(`<td>${minutesAway.toLocaleString()} mins`)
+    }
 
     $(`#employeeTable`).append(tableRow)
           
