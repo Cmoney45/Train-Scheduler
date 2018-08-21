@@ -1,0 +1,13 @@
+body {
+    background-image: url(../images/dark_embroidery.png);
+}
+
+/* Get table to fit into card */
+.container {
+    display: table;
+}
+
+/* Set Card so min won't have the page expand */
+.trainCard {
+    min-width: 480px;
+}

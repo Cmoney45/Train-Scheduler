@@ -74,7 +74,7 @@ let frequency = 0;
         trainStarted = moment(trainStarted, "X").add(frequency,"m");
     }
     const minutesAway = Math.ceil(parseInt(moment(trainStarted,"X").format("X")-moment(currentTime,"X").format("X"))/60)
-
+    $(`#currentTime`).html(`<p>Current Time: ${moment(currentTime).format("hh:mm a")}</p>`)
     // full list of items to the well
     const tableRow = $(`<tr>`);
     tableRow.append(`<td>${childSnapshot.val().name}`)

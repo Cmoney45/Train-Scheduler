@@ -10,20 +10,22 @@
 </head>
 <body>
     <div class="container">
-        <div class="jumbotron jumbotron-fluid">
+        <div class="jumbotron jumbotron-fluid p-1">
                 <div class="container">
-                  <h1 class="display-4 text-center">Anytime is Train Time</h1>
-                  <p class="lead text-center">Choo Choo. Chee Chee.</p>
+                  <h1 class="display-4 text-center">Train Schedule</h1>
+                  <p class="lead text-center" id="currentTime">Current Time: </p>
                 </div>
+                <a class="btn btn-primary" href="https://cmoney45.github.io/portfolio.html">Colton's Portfolio</a>
+
         </div>
-        <div class="row mt-5">
+        <div class="row">
             <div class="col">
-                <div class="card border-primary mb-3">
+                <div class="card border-primary mb-3 trainCard">
                     <div class="card-header primary">
                         Train Schedule
-                        <span class="text-align-right" id=currentTime>Current Time: </span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-1">
+                        <div class="p-0 container">
                         <table class="table table-striped">
                             <thead class="thead-dark">
                                 <tr>
@@ -38,13 +40,14 @@
 
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
         <div class="row">
             <div class="col">
                 <div class="card border-primary">
                     <div class="card-header">
-                        Add Train
+                        Add a Train
                     </div>
                     <div class="card-body">
                         <form>
