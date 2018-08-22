@@ -91,7 +91,7 @@ let frequency = 0;
     tableRow.append(`<td>${minutesAway.toLocaleString()} mins`)
     }
 
-    $(`#employeeTable`).append(tableRow)
+    $(`#trainTable`).append(tableRow)
           
     // Handle the errors
   }, function(errorObject) {
