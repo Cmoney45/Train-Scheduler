@@ -23,7 +23,7 @@ let frequency = 0;
 
 
 // Create on click event
-  $(`#add-train`).on('click', function(event){
+  $(`#add-train`).on('click', event => {
     event.preventDefault();
     $(`#error-message`).remove()
     const errorAlert = $(`<div>`);
@@ -65,7 +65,7 @@ let frequency = 0;
     })
 })
 
-  database.ref(`/trains`).on("child_added", function(childSnapshot) {
+  database.ref(`/trains`).on("child_added", childSnapshot => {
     const currentTime = moment()
     let trainStarted = childSnapshot.val().startTime
     const frequency = parseInt(childSnapshot.val().frequency)
@@ -94,6 +94,6 @@ let frequency = 0;
     $(`#trainTable`).append(tableRow)
           
     // Handle the errors
-  }, function(errorObject) {
+  }, errorObject => {
     console.log("Errors handled: " + errorObject.code);
 });
